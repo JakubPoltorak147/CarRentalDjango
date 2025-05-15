@@ -1,0 +1,57 @@
+{% extends 'car_dealer/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="card">
+    <h2>Vehicle's Order List</h2>
+    <p>Below are all active orders that have not been completed yet.</p>
+
+    <!-- Nawigacja -->
+    <div class="additional-links">
+      <a href="{% url 'index' %}" class="btn-custom">Homepage</a>
+      <a href="{% url 'manage_vehicles' %}" class="btn-custom secondary">Vehicles</a>
+      <a href="{% url 'history' %}" class="btn-custom secondary">Earnings</a>
+      <a href="{% url 'logout' %}" class="btn-custom">Logout</a>
+    </div>
+
+    {% if order_list %}
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th data-sort="string">Photo</th>
+            <th data-sort="string">Name</th>
+            <th data-sort="string">Color</th>
+            <th data-sort="int">Rental Amount</th>
+            <th data-sort="int">Days</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for order in order_list %}
+          <tr>
+            <td>
+              {% if order.vehicle.photo %}
+                <img src="{{ order.vehicle.photo.url }}" alt="Car Photo" class="vehicle-thumbnail">
+              {% else %}
+                <em>No Photo</em>
+              {% endif %}
+            </td>
+            <td>{{ order.vehicle.car_name }}</td>
+            <td>{{ order.vehicle.color }}</td>
+            <td>${{ order.rent }}</td>
+            <td>{{ order.days }}</td>
+            <td>
+              <a href="{% url 'confirm_complete_order' order.id %}" class="btn-custom small secondary">
+                Complete
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No active orders.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

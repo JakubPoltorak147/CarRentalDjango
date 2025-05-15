@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Rental System</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+  <header>
+    <h1>Car Rental System</h1>
+    <p>Experience the best car rental service</p>
+  </header>
+
+<div class="container">
+    <div class="card">
+      <h2>Customer Portal</h2>
+      <p>Access and manage your bookings with ease.</p>
+      <form action="/customer_portal/login/" method="GET">
+        <button type="submit" class="btn-custom">Customer Login</button>
+      </form>
+    </div>
+    <div class="card">
+      <h2>Dealer Portal</h2>
+      <p>Manage your car inventory and track bookings.</p>
+      <form action="/car_dealer_portal/login/" method="GET">
+        <button type="submit" class="btn-custom">Dealer Login</button>
+      </form>
+    </div>
+</div>
+
+
+  <footer>
+    <p>&copy; 2025 Car Rental System. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>

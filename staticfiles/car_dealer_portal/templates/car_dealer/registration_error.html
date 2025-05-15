@@ -1,0 +1,17 @@
+{% extends 'car_dealer/base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="card">
+    <h2>Registration Error</h2>
+    <p class="error-message">
+      <strong>Error:</strong> Something went wrong while creating your account.
+      Please try again or contact support.
+    </p>
+    <div class="additional-links">
+      <a href="/car_dealer_portal/register/" class="btn-custom secondary">Try Registering Again</a>
+      <a href="/car_dealer_portal/login/" class="btn-custom">Go to Login</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="card">
+    <div class="top-links">
+      <a class="btn-custom small secondary" href="/customer_portal/">Home</a>
+      <a class="btn-custom small secondary" href="/customer_portal/logout/">Logout</a>
+      <a class="btn-custom small secondary" href="/customer_portal/manage/">Manage Orders</a>
+    </div>
+
+    <h2>All Available Cars</h2>
+    <p>Browse the complete list of cars below.</p>
+
+    {% if vehicles %}
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Photo</th>
+            <th>Car Name</th>
+            <th>Color</th>
+            <th>Capacity</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for v in vehicles %}
+          <tr>
+            <td>
+              {% if v.photo %}
+                <img src="{{ v.photo.url }}" alt="Car Photo" class="vehicle-thumbnail" />
+              {% else %}
+                <em>No photo</em>
+              {% endif %}
+            </td>
+            <td>{{ v.car_name }}</td>
+            <td>{{ v.color }}</td>
+            <td>{{ v.capacity }}</td>
+            <td>${{ v.price }}</td>
+            <td>
+              <!-- Link do szczegółów pojazdu -->
+              <a class="btn-custom small secondary" 
+                 href="{% url 'customer_portal:vehicle_details' v.id %}">
+                View Details
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No cars available.</p>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}

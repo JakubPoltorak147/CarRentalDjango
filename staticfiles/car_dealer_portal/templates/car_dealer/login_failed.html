@@ -1,0 +1,28 @@
+{% extends 'car_dealer/base.html' %}
+{% block content %}
+<div class="container">
+  <div class="card">
+    <h2>Login Failed</h2>
+    <p class="error-message">
+      {% if error_type == 'no_user' %}
+        <strong>Error:</strong> No Dealer account found with the provided username.
+        Please check your username and try again.
+      {% elif error_type == 'wrong_password' %}
+        <strong>Error:</strong> The password you entered is incorrect. Please try again.
+      {% elif error_type == 'not_active' %}
+        <strong>Error:</strong> Your account is not active. Please contact support or check your activation link.
+      {% elif error_type == 'no_dealer' %}
+        <strong>Error:</strong> The account exists but is not associated with a Dealer profile.
+      {% elif error_type == 'empty_fields' %}
+        <strong>Error:</strong> Both username and password are required.
+      {% else %}
+        <strong>Error:</strong> Unable to log you in. Please try again or contact support.
+      {% endif %}
+    </p>
+    <div class="additional-links">
+      <a href="/car_dealer_portal/login/" class="btn-custom">Go Back to Login</a>
+      <a href="/car_dealer_portal/register/" class="btn-custom secondary">Register a New Dealer</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

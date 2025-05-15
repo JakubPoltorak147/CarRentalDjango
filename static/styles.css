@@ -1,0 +1,338 @@
+/* Global Styles */
+body {
+  background: linear-gradient(to bottom, #0F2027, #203A43, #2C5364);
+  color: #f8f9fa;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+header {
+  background-color: #1C2833;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #f8f9fa;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #adb5bd;
+}
+
+/* Container */
+.container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 100%;
+}
+
+/* Card */
+.card {
+  background: #2C3E50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  padding: 30px 25px;
+  color: #f8f9fa;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #d0d3d4;
+  margin-bottom: 20px;
+}
+
+.card p strong {
+  color: #f8f9fa;
+  font-weight: bold;
+}
+
+/* Button Styles */
+.btn-custom {
+  background: #007bff;
+  color: #f8f9fa;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 30px;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-decoration: none; /* Usuń podkreślenie */
+}
+
+.btn-custom:hover {
+  background: #0056b3;
+  border-color: #f8f9fa;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Additional Button Styles */
+.btn-custom.secondary {
+  background: #17a2b8;
+  color: #f8f9fa;
+}
+
+.btn-custom.secondary:hover {
+  background: #138496;
+}
+
+.btn-custom.small.secondary {
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  border-radius: 20px;
+  background: #2C3E50;
+  color: #f8f9fa;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid #f8f9fa;
+  transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-custom.small.secondary:hover {
+  background: #34495E;
+  border-color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Form Styles */
+.form {
+  max-width: 600px; /* Ustalona maksymalna szerokość formularza */
+  margin: 0 auto; /* Wyśrodkowanie formularza */
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #f8f9fa;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+input.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background: #f8f9fa;
+  color: #2C3E50;
+  box-sizing: border-box;
+}
+
+input.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+input.form-control.error {
+  border-color: #e74c3c;
+  box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+}
+
+.error-message {
+  color: #f8d7da;
+  background-color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  padding: 8px;
+  margin-top: 5px;
+  font-size: 0.85rem;
+  width: 100%;
+}
+
+/* Image Styles */
+.vehicle-image {
+  width: 100%; /* Szerokość 100% kontenera */
+  max-width: 500px; /* Maksymalna szerokość */
+  height: auto; /* Zachowanie proporcji */
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+  object-fit: contain; /* Cały obrazek jest widoczny */
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+}
+
+/* Stylizacja miniaturki w tabelkach */
+.vehicle-thumbnail {
+  max-width: 100px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.vehicle-thumbnail:hover {
+  transform: scale(1.05);
+}
+
+/* Ulepszenia tabeli */
+.table-custom {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  text-align: center;
+  background-color: #2C3E50;
+  color: #f8f9fa;
+}
+
+.table-custom th {
+  cursor: pointer; /* Indikator sortowania */
+  padding: 12px;
+  border-bottom: 2px solid #34495E;
+  position: relative;
+}
+
+.table-custom th.sorted-asc::after,
+.table-custom th.sorted-desc::after {
+  content: '';
+  position: absolute;
+  right: 8px;
+  border: 6px solid transparent;
+}
+
+.table-custom th.sorted-asc::after {
+  border-bottom-color: #f8f9fa;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.table-custom th.sorted-desc::after {
+  border-top-color: #f8f9fa;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.table-custom tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #34495E;
+}
+
+.table-custom tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Paginacja */
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination .page-links a {
+  color: #f8f9fa;
+  padding: 8px 12px;
+  margin: 0 4px;
+  text-decoration: none;
+  border: 1px solid #f8f9fa;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination .page-links a:hover {
+  background-color: #f8f9fa;
+  color: #2C3E50;
+}
+
+.pagination .page-links .current {
+  background-color: #f8f9fa;
+  color: #2C3E50;
+  padding: 8px 12px;
+  margin: 0 4px;
+  border-radius: 4px;
+  border: 1px solid #f8f9fa;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .card {
+    max-width: 90%;
+    padding: 20px 15px;
+  }
+
+  .vehicle-image {
+    max-width: 100%;
+  }
+
+  .table-custom th, .table-custom td {
+    padding: 8px;
+  }
+
+  .btn-custom {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+
+  .additional-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form {
+    max-width: 100%; /* Pełna szerokość na mniejszych ekranach */
+  }
+}
+/* Footer */
+footer {
+  background-color: #1C2833;
+  color: #adb5bd;
+  text-align: center;
+  padding: 15px 0;
+  width: 100%;
+  /* Możesz dodać fixed lub sticky, jeśli tego potrzebujesz */
+  /* position: fixed;
+  bottom: 0;
+  left: 0; */
+  /* Alternatywnie, aby stopka była na dole strony, ale nie zasłaniała treści: */
+  /* position: absolute;
+  bottom: 0;
+  width: 100%; */
+}
+body {
+  display: flex;
+  flex-direction: column;
+}

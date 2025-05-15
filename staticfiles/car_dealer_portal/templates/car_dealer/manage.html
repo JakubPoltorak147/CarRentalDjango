@@ -1,0 +1,55 @@
+{% extends 'car_dealer/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="card">
+    <h2>Posted Vehicles</h2>
+    <p>Here are all the vehicles you have posted.</p>
+
+    <!-- Przyciski nawigacji -->
+    <div class="additional-links">
+      <a href="{% url 'index' %}" class="btn-custom">Homepage</a>
+      <a href="{% url 'order_list' %}" class="btn-custom">Orders</a>
+      <a href="{% url 'history' %}" class="btn-custom">Earnings</a>
+      <a href="{% url 'logout' %}" class="btn-custom">Logout</a>
+    </div>
+
+    {% if vehicle_list %}
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <!-- Usunięta kolumna Photo -->
+            <th data-sort="string">Car Name</th>
+            <th data-sort="string">Color</th>
+            <th data-sort="int">Capacity</th>
+            <th data-sort="int">Price (USD)</th>
+            <th data-sort="int">Pincode</th>
+            <th data-sort="string">City</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for vehicle in vehicle_list %}
+          <tr>
+            <!-- Usunięta kolumna Photo -->
+            <td>{{ vehicle.car_name }}</td>
+            <td>{{ vehicle.color }}</td>
+            <td>{{ vehicle.capacity }} seats</td>
+            <td>${{ vehicle.price }}</td>
+            <td>{{ vehicle.area.pincode }}</td>
+            <td>{{ vehicle.area.city|capfirst }}</td>
+            <td>
+              <a class="btn-custom small secondary" href="{% url 'vehicle_detail' vehicle.id %}">
+                View Details
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No vehicles posted yet.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

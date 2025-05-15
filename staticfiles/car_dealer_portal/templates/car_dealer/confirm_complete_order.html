@@ -1,0 +1,27 @@
+{% extends 'car_dealer/base.html' %}
+{% block content %}
+<div class="container">
+  <div class="card">
+    <h2>Confirm Completion</h2>
+    <p>Are you sure you want to complete (finish) this rental?</p>
+
+    <div style="text-align: left; margin-top: 20px;">
+      <p><strong>Car Name:</strong> {{ order.vehicle.car_name }}</p>
+      <p><strong>Color:</strong> {{ order.vehicle.color }}</p>
+      <p><strong>Rented by:</strong> {{ order.user.username }}</p>
+      <p><strong>Days:</strong> {{ order.days }}</p>
+      <p><strong>Total Rent:</strong> ${{ order.rent }}</p>
+    </div>
+
+    <form method="POST" action="/car_dealer_portal/complete/">
+      {% csrf_token %}
+      <input type="hidden" name="id" value="{{ order.id }}">
+      <button type="submit" class="btn-custom">Yes, Complete</button>
+    </form>
+
+    <div class="additional-links">
+      <a href="/car_dealer_portal/order_list/" class="btn-custom secondary">Back to Orders</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

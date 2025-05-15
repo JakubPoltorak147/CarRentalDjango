@@ -1,0 +1,29 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="card">
+    <h2>Order Detail</h2>
+    <p>Detailed information about this rental.</p>
+
+    <div style="text-align: left; margin-top: 20px;">
+      <p><strong>Car Name:</strong> {{ order.vehicle.car_name }}</p>
+      <p><strong>Color:</strong> {{ order.vehicle.color }}</p>
+      <p><strong>Capacity:</strong> {{ order.vehicle.capacity }} seats</p>
+      <p><strong>Rent:</strong> ${{ order.rent }}</p>
+      <p><strong>Days:</strong> {{ order.days }}</p>
+      <p><strong>Status:</strong> 
+        {% if order.is_complete %}Completed{% else %}Active{% endif %}
+      </p>
+      <hr>
+      <p><strong>Rented by (User):</strong> {{ order.user.username }}</p>
+      <p><strong>User Email:</strong> {{ order.user.email }}</p>
+      <!-- Dodaj dodatkowe informacje o użytkowniku, jeśli potrzebne -->
+    </div>
+
+    <div class="additional-links" style="margin-top: 20px;">
+      <a href="{% url 'customer_portal:manage' %}" class="btn-custom">Back to Orders</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

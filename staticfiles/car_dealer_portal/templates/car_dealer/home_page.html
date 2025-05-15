@@ -1,0 +1,103 @@
+{% extends 'car_dealer/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="card">
+    <h2>Car Dealer Portal: {{ user.username }}</h2>
+    <p>Welcome to the Car Dealer dashboard. Manage your vehicles, orders, and profile here.</p>
+
+    <div class="additional-links">
+      <a href="{% url 'manage_vehicles' %}" class="btn-custom">Vehicles</a>
+      <a href="{% url 'order_list' %}" class="btn-custom">Orders</a>
+      <a href="{% url 'history' %}" class="btn-custom">Earnings</a>
+      <a href="{% url 'update_profile' %}" class="btn-custom secondary">Update Profile</a>
+      <a href="{% url 'reset_password_request' %}" class="btn-custom secondary">Change Password</a>
+      <a href="{% url 'logout' %}" class="btn-custom">Logout</a>
+    </div>
+
+    <hr style="margin: 20px 0;">
+
+    <h3>Add a New Vehicle</h3>
+
+    {% if form_errors %}
+      <div class="alert alert-danger">
+        <ul>
+          {% for field, error in form_errors.items %}
+            <li><strong>{{ field|capfirst }}:</strong> {{ error }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <form action="{% url 'add_vehicle' %}" method="POST" enctype="multipart/form-data" class="form">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="car_name">Car Name:</label>
+        <input id="car_name" class="form-control {% if form_errors.car_name %}error{% endif %}" type="text" name="car_name" value="{{ form_data.car_name }}" required>
+        {% if form_errors.car_name %}
+          <div class="error-message">{{ form_errors.car_name }}</div>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="color">Color:</label>
+        <input id="color" class="form-control {% if form_errors.color %}error{% endif %}" type="text" name="color" value="{{ form_data.color }}" required>
+        {% if form_errors.color %}
+          <div class="error-message">{{ form_errors.color }}</div>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="city">City:</label>
+        <input id="city" class="form-control {% if form_errors.city %}error{% endif %}" type="text" name="city" value="{{ form_data.city }}" required>
+        {% if form_errors.city %}
+          <div class="error-message">{{ form_errors.city }}</div>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="pincode">Pincode:</label>
+        <input id="pincode" class="form-control {% if form_errors.pincode %}error{% endif %}" type="text" name="pincode" value="{{ form_data.pincode }}" required>
+        {% if form_errors.pincode %}
+          <div class="error-message">{{ form_errors.pincode }}</div>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <input id="description" class="form-control {% if form_errors.description %}error{% endif %}" type="text" name="description" value="{{ form_data.description }}">
+        {% if form_errors.description %}
+          <div class="error-message">{{ form_errors.description }}</div>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="capacity">Capacity (Seats):</label>
+        <input id="capacity" class="form-control {% if form_errors.capacity %}error{% endif %}" type="text" name="capacity" value="{{ form_data.capacity }}" required>
+        {% if form_errors.capacity %}
+          <div class="error-message">{{ form_errors.capacity }}</div>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <input id="price" class="form-control {% if form_errors.price %}error{% endif %}" type="text" name="price" placeholder="Enter price in USD" value="{{ form_data.price }}" required>
+        {% if form_errors.price %}
+          <div class="error-message">{{ form_errors.price }}</div>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        <label for="photo">Car Photo:</label>
+        <input id="photo" class="form-control" type="file" name="photo" accept="image/*">
+        {% if form_errors.photo %}
+          <div class="error-message">{{ form_errors.photo }}</div>
+        {% endif %}
+      </div>
+
+      <button type="submit" class="btn-custom">Add Vehicle</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

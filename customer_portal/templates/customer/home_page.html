@@ -1,0 +1,25 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="card">
+    <div class="top-links">
+      <a class="btn-custom small secondary" href="/customer_portal/logout/">Logout</a>
+      <a class="btn-custom small secondary" href="/customer_portal/manage/">Manage Orders</a>
+      <a class="btn-custom small secondary" href="/customer_portal/update_profile/">Update Profile</a>
+      <a class="btn-custom small secondary" href="/customer_portal/reset_password_request/">Change Password</a>
+    </div>
+
+    <h2>Welcome, {{ user.username }}!</h2>
+    <p>You can search for rental cars, manage your orders, or update your profile.</p>
+
+    <img src="{% static 'images/car-home.jpg' %}" style="max-width:100%; border-radius:10px; margin:20px 0;">
+
+    <!-- Stary przycisk wyszukiwania po mieście -->
+    <a class="btn-custom" href="/customer_portal/search/">Search for Rental Cars</a>
+
+    <!-- Nowy przycisk wyświetlający całą bazę aut -->
+    <a class="btn-custom" href="/customer_portal/all_cars/">View All Cars</a>
+  </div>
+</div>
+{% endblock %}

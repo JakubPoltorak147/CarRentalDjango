@@ -1,0 +1,26 @@
+{% load static %}
+<html lang="en">
+<head>
+  <title>Car Rental System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Car Rental System</h1>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Car Rental System. All Rights Reserved.</p>
+  </footer>
+
+  <script src="{% static 'scripts.js' %}"></script>
+</body>
+</html>

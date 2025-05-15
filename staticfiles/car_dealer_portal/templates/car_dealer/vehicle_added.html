@@ -1,0 +1,22 @@
+{% extends 'car_dealer/base.html' %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+
+    <!-- Header Section -->
+    <header>
+        <h1>Car Dealer Portal: {{ user.username }}</h1>
+    </header>
+
+    <!-- Main Content Container -->
+    <div class="container">
+        <div class="card">
+            <h2>Vehicle Details Added!</h2>
+            <p>Your vehicle information has been successfully added to the system.</p>
+            <a class="btn-custom" href="/car_dealer_portal/index/">Back To Home Page</a>
+        </div>
+    </div>
+
+</form>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="card">
+    <h2>Vehicle Details</h2>
+    <p>Complete information about this vehicle.</p>
+
+    <div class="vehicle-info">
+      <p><strong>Car Name:</strong> {{ vehicle.car_name }}</p>
+      <p><strong>Color:</strong> {{ vehicle.color }}</p>
+      <p><strong>Capacity:</strong> {{ vehicle.capacity }} seats</p>
+      <p><strong>Price:</strong> ${{ vehicle.price }}</p>
+      <p><strong>Available:</strong>
+        {% if vehicle.is_available %}Yes{% else %}No{% endif %}
+      </p>
+      <p><strong>Description:</strong> {{ vehicle.description }}</p>
+      <p><strong>Location:</strong> {{ vehicle.area.city|capfirst }} ({{ vehicle.area.pincode }})</p>
+      <p><strong>Dealer Username:</strong> {{ vehicle.dealer.car_dealer.username }}</p>
+      <p><strong>Dealer Email:</strong> {{ vehicle.dealer.car_dealer.email }}</p>
+      <p><strong>Dealer Contact:</strong> {{ vehicle.dealer.mobile }}</p>
+
+      {% if vehicle.photo %}
+        <p><strong>Car Photo:</strong></p>
+        <div class="image-container">
+          <img src="{{ vehicle.photo.url }}" alt="Car Photo" class="vehicle-image" loading="lazy">
+        </div>
+      {% else %}
+        <p><em>No photo provided.</em></p>
+      {% endif %}
+    </div>
+
+    <!-- Formularz do wypożyczenia (przechodzi do istniejącego widoku rent_vehicle) -->
+    {% if vehicle.is_available %}
+      <form action="{% url 'customer_portal:rent_vehicle' %}" method="post" style="margin-top:20px;">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{ vehicle.id }}" />
+        <button type="submit" class="btn-custom">
+          Rent This Car
+        </button>
+      </form>
+    {% else %}
+      <p><em>This car is currently not available.</em></p>
+    {% endif %}
+
+    <div class="additional-links" style="margin-top:20px;">
+      <a href="{% url 'customer_portal:all_cars' %}" class="btn-custom secondary">Back to All Cars</a>
+      <a href="/customer_portal/" class="btn-custom secondary">Return Home</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

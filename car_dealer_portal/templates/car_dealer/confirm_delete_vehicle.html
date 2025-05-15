@@ -1,0 +1,29 @@
+{% extends 'car_dealer/base.html' %}
+{% block content %}
+<div class="container">
+  <div class="card">
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete the vehicle <strong>{{ vehicle.car_name }}</strong>?</p>
+
+    {% if vehicle.photo %}
+      <div class="image-container">
+        <img src="{{ vehicle.photo.url }}" alt="Car Photo" class="vehicle-image">
+      </div>
+    {% else %}
+      <p><em>No photo available.</em></p>
+    {% endif %}
+
+    <p>This action cannot be undone.</p>
+
+    <form method="POST" action="/car_dealer_portal/delete/">
+      {% csrf_token %}
+      <input type="hidden" name="id" value="{{ vehicle.id }}">
+      <button type="submit" class="btn-custom">Yes, Delete</button>
+    </form>
+
+    <a href="/car_dealer_portal/manage_vehicles/" class="btn-custom secondary" style="margin-top: 20px;">
+      Cancel
+    </a>
+  </div>
+</div>
+{% endblock %}

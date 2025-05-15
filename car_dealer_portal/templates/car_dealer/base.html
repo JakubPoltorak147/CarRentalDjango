@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Car Dealer Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Główny plik CSS -->
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+  <header>
+    <h1>Car Dealer Portal</h1>
+    <p>Manage your vehicles and rentals with ease.</p>
+  </header>
+
+  {% block content %}
+  {% endblock %}
+
+  <footer>
+    <p>&copy; 2025 Car Rental System. All rights reserved.</p>
+  </footer>
+
+  <!-- Skrypt JS (opcjonalnie, np. do walidacji front-end) -->
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

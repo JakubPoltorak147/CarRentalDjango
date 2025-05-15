@@ -1,0 +1,27 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+  <div class="card">
+    <h2>Order Failed</h2>
+    <p>
+      {% if error_message %}
+        {{ error_message }}
+      {% else %}
+        Unfortunately, your order could not be completed
+        (e.g. the vehicle is no longer available).
+      {% endif %}
+    </p>
+
+    <p>Please try again or choose another car.</p>
+
+    <div style="margin-top:20px;">
+      <a class="btn-custom secondary" href="/customer_portal/">Return Home</a>
+      <a class="btn-custom secondary" href="/customer_portal/manage/" style="margin-left:10px;">Manage Orders</a>
+      <a class="btn-custom secondary" href="/customer_portal/search/" style="margin-left:10px;">Search Cars</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

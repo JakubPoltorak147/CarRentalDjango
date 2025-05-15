@@ -1,0 +1,16 @@
+{% extends 'car_dealer/base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="card">
+    <h2>Activation Failed</h2>
+    <p class="error-message">
+      <strong>Error:</strong> The activation link is invalid or has expired.
+    </p>
+    <div class="additional-links">
+      <a href="/car_dealer_portal/register/" class="btn-custom">Register Again</a>
+      <a href="/car_dealer_portal/login/" class="btn-custom secondary">Login</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

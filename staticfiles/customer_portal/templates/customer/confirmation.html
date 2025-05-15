@@ -1,0 +1,48 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+  <div class="card">
+    <h2>Confirm Your Rental</h2>
+    <p>Please verify the details below and specify for how many days you want to rent.</p>
+
+    <div class="vehicle-info" style="text-align:left; margin-bottom: 20px;">
+      <p><strong>Car Name:</strong> {{ vehicle.car_name }}</p>
+      <p><strong>Color:</strong> {{ vehicle.color }}</p>
+      <p><strong>Capacity:</strong> {{ vehicle.capacity }} seats</p>
+      <p><strong>Price per Day:</strong> ${{ cost_per_day }}</p>
+      <p><strong>Dealer:</strong>
+        {{ vehicle.dealer.car_dealer.first_name }}
+        {{ vehicle.dealer.car_dealer.last_name }}
+      </p>
+      <p><strong>Dealer Contact:</strong> {{ vehicle.dealer.mobile }}</p>
+      <p><strong>Location:</strong>
+        {{ vehicle.area.city|capfirst }} ({{ vehicle.area.pincode }})
+      </p>
+    </div>
+
+    <form class="form" action="/customer_portal/confirmed/" method="post" style="margin:0 auto;">
+      {% csrf_token %}
+      <input type="hidden" name="id" value="{{ vehicle.id }}">
+
+      <div class="form-group">
+        <label for="days">Number of Days:</label>
+        <input
+          type="number"
+          class="form-control"
+          name="days"
+          id="days"
+          placeholder="e.g. 2"
+          required
+          min="1">
+      </div>
+
+      <button type="submit" class="btn-custom" style="margin-top: 10px;">
+        Confirm My Order
+      </button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

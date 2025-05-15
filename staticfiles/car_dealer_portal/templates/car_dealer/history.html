@@ -1,0 +1,54 @@
+{% extends 'car_dealer/base.html' %}
+{% block content %}
+<div class="container">
+  <div class="card">
+    <h2>History</h2>
+    <p>All completed and active orders for your account. Earnings: ${{ wallet }}</p>
+
+    <div class="additional-links">
+      <a href="/car_dealer_portal/index/" class="btn-custom">Homepage</a>
+      <a href="/car_dealer_portal/order_list/" class="btn-custom secondary">Orders</a>
+      <a href="/car_dealer_portal/manage_vehicles/" class="btn-custom secondary">Vehicles</a>
+      <a href="/car_dealer_portal/logout/" class="btn-custom">Logout</a>
+    </div>
+
+    <!-- Przykład sortowania w kliencie: dodaj atrybut data-sortable i użyj JS. -->
+    <!-- Ewentualnie można dodać linki GET -> /history/?sortby=name itd. -->
+
+    {% if order_list %}
+      <table class="table-custom" id="history-table">
+        <thead>
+          <tr>
+            <th data-sort="string">Car Name</th>
+            <th data-sort="int">Rent</th>
+            <th data-sort="int">Days</th>
+            <th data-sort="int">Capacity</th>
+            <th data-sort="string">Status</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for order in order_list %}
+          <tr>
+            <td>{{ order.vehicle.car_name }}</td>
+            <td>${{ order.rent }}</td>
+            <td>{{ order.days }}</td>
+            <td>{{ order.vehicle.capacity }}</td>
+            <td>
+              {% if order.is_complete %}Completed{% else %}Active{% endif %}
+            </td>
+            <td>
+              <a href="/car_dealer_portal/order_detail/{{ order.id }}/" class="btn-custom small secondary">
+                View
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>No orders found.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

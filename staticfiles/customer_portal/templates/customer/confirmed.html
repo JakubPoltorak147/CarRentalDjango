@@ -1,0 +1,33 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+  <div class="card">
+    <h2>Order Completed</h2>
+    <p>Your vehicle order has been processed successfully!</p>
+
+    <div class="vehicle-info" style="text-align:left; margin-bottom: 20px;">
+      <p><strong>Total Rent:</strong> ${{ order.rent }}</p>
+      <p><strong>Vehicle:</strong> {{ order.vehicle.car_name }}</p>
+      <p><strong>Duration:</strong> {{ order.days }} days</p>
+      <p><strong>Car Dealer:</strong>
+        {{ order.car_dealer.car_dealer.first_name }} {{ order.car_dealer.car_dealer.last_name }}
+      </p>
+      <p><strong>Dealer Contact:</strong> {{ order.car_dealer.mobile }}</p>
+    </div>
+
+    <p>Thank you for using our service!</p>
+
+    <div style="margin-top:20px;">
+      <a href="/customer_portal/" class="btn-custom secondary">
+        Return Home
+      </a>
+      <a href="/customer_portal/manage/" class="btn-custom secondary" style="margin-left:10px;">
+        Manage Orders
+      </a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
