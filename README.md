@@ -39,35 +39,98 @@ CarRentalDjango/
 │   ├── urls.py                 # Main URL routing
 │   └── wsgi.py                 # WSGI configuration
 │
-├── vehicles/                   # Vehicle app
-│   ├── models.py               # Vehicle and related models
-│   ├── views.py                # Vehicle-related views
-│   ├── urls.py                 # URL patterns for vehicle app
-│   └── templates/              # Templates for vehicle views
+├── car_dealer_portal/          # Dealer portal application
+│   ├── __pycache__/            # Python cache files
+│   ├── migrations/             # Database migrations
+│   ├── templates/              # View templates
+│   │   └── car_dealer/         # Dealer-specific templates
+│   │       ├── activation_failed.html
+│   │       ├── activation_success.html
+│   │       ├── base.html
+│   │       ├── confirm_complete_order.html
+│   │       ├── confirm_delete_vehicle.html
+│   │       ├── history.html
+│   │       ├── home_page.html
+│   │       ├── login.html
+│   │       ├── login_failed.html
+│   │       ├── manage.html
+│   │       ├── order_detail.html
+│   │       ├── order_list.html
+│   │       ├── password_reset_success.html
+│   │       ├── profile_updated.html
+│   │       ├── register.html
+│   │       ├── registered.html
+│   │       ├── registration_error.html
+│   │       ├── registration_pending.html
+│   │       ├── reset_password_confirm.html
+│   │       ├── reset_password_email_sent.html
+│   │       ├── reset_password_request.html
+│   │       ├── update_profile.html
+│   │       ├── vehicle_added.html
+│   │       └── vehicle_detail.html
+│   ├── __init__.py
+│   ├── admin.py                # Admin panel configuration
+│   ├── apps.py                 # Application configuration
+│   ├── models.py               # Data models
+│   ├── tests.py                # Tests
+│   ├── urls.py                 # URL routing for dealer portal
+│   └── views.py                # Dealer portal views
 │
-├── bookings/                   # Booking app
-│   ├── models.py               # Booking and related models
-│   ├── views.py                # Booking-related views
-│   ├── urls.py                 # URL patterns for booking app
-│   └── templates/              # Templates for booking views
+├── customer_portal/            # Customer portal application
+│   ├── __pycache__/            # Python cache files
+│   ├── migrations/             # Database migrations
+│   ├── templates/              # View templates
+│   │   └── customer/           # Customer-specific templates
+│   │       ├── account_activated.html
+│   │       ├── activation_failed.html
+│   │       ├── all_cars.html
+│   │       ├── base.html
+│   │       ├── confirmation.html
+│   │       ├── confirmed.html
+│   │       ├── home_page.html
+│   │       ├── login.html
+│   │       ├── login_failed.html
+│   │       ├── manage.html
+│   │       ├── order_detail.html
+│   │       ├── order_failed.html
+│   │       ├── password_reset_success.html
+│   │       ├── profile_updated.html
+│   │       ├── register.html
+│   │       ├── registration_error.html
+│   │       ├── registration_pending.html
+│   │       ├── reset_password_confirm.html
+│   │       ├── reset_password_email_sent.html
+│   │       ├── reset_password_request.html
+│   │       ├── search.html
+│   │       ├── search_results.html
+│   │       ├── update_profile.html
+│   │       └── vehicle_details.html
+│   ├── __init__.py
+│   ├── admin.py                # Admin panel configuration
+│   ├── apps.py                 # Application configuration
+│   ├── models.py               # Data models
+│   ├── tests.py                # Tests
+│   ├── urls.py                 # URL routing for customer portal
+│   └── views.py                # Customer portal views
 │
-├── accounts/                   # User accounts app
-│   ├── models.py               # User profile models
-│   ├── views.py                # Authentication and user-related views
-│   ├── urls.py                 # URL patterns for accounts app
-│   └── templates/              # Templates for account views
-│
-├── static/                     # Static files (CSS, JS, images)
-│   ├── css/                    # Stylesheets
-│   ├── js/                     # JavaScript files
-│   └── images/                 # Image assets
+├── home/                       # Home page application
+│   ├── __pycache__/            # Python cache files
+│   ├── migrations/             # Database migrations
+│   ├── templates/              # View templates
+│   │   └── home/               # Home page templates
+│   │       └── index.html      # Home page
+│   ├── __init__.py
+│   ├── admin.py                # Admin panel configuration
+│   ├── apps.py                 # Application configuration
+│   ├── models.py               # Data models
+│   ├── tests.py                # Tests
+│   ├── urls.py                 # URL routing for home page
+│   └── views.py                # Home page views
 │
 ├── media/                      # User-uploaded content
+│   └── vehicles/               # Vehicle images (e.g., audi-a4.jpg, bmw-x1.jpg)
 │
-├── templates/                  # Global templates
-│   ├── base.html               # Base template for inheritance
-│   ├── home.html               # Homepage template
-│   └── ...                     # Other global templates
+├── vehicles/                   # Vehicles application (empty structure, functionality in other apps)
 │
 ├── manage.py                   # Django management script
 ├── requirements.txt            # Project dependencies
@@ -143,13 +206,12 @@ The system supports different user roles with specific permissions:
    - Browse and search vehicles
    - Make and manage bookings
    - View rental history
-   - Submit reviews
+   - Manage account settings
 
 2. **Admin/Dealer**
    - Manage vehicle inventory
    - Process bookings
-   - Access reports and analytics
-   - Manage user accounts
+   - Manage account settings
 
 3. **Superadmin**
    - Full system access
