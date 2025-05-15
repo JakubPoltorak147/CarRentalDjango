@@ -13,20 +13,18 @@ CarRentalDjango is a web-based application that facilitates the management of ca
 - **Vehicle Search**: Filter vehicles by location, type, availability, and other criteria
 - **Booking Management**: View, create, and manage rental bookings
 - **Profile Management**: Update personal information and view rental history
-- **Rating & Reviews**: Leave feedback for rented vehicles
 
 ### Admin/Dealer Panel
 - **Dashboard**: Overview of bookings, revenue, and available vehicles
 - **Inventory Management**: Add, edit, and remove vehicles from the fleet
 - **Booking Control**: Approve, decline, or modify booking requests
 - **User Management**: Manage customer accounts and permissions
-- **Reports**: Generate and export reports on rentals, revenue, and vehicle utilization
 
 ## 🔧 Technology Stack
 
 - **Backend**: Django (Python web framework)
 - **Database**: SQLite (default) / PostgreSQL (production)
-- **Frontend**: HTML, CSS, JavaScript, Bootstrap
+- **Frontend**: HTML, CSS, JavaScript
 - **Authentication**: Django Authentication System
 - **Forms**: Django Forms with validation
 - **ORM**: Django ORM for database interactions
@@ -86,7 +84,6 @@ The system uses several interconnected models to manage its data:
 - **Location**: Available rental locations
 - **Booking**: Records of vehicle rentals including dates and customer information
 - **Payment**: Payment information and status
-- **Review**: Customer reviews and ratings for vehicles
 
 ## 🛠️ Installation and Setup
 
@@ -169,40 +166,6 @@ The system supports different user roles with specific permissions:
    - Full system access
    - Configure system settings
    - Manage all users and their permissions
-
-## 🧪 Testing
-
-Run the automated test suite with:
-
-```bash
-python manage.py test
-```
-
-## 📱 API Endpoints
-
-The application provides RESTful API endpoints for integration with mobile applications or third-party services:
-
-- `/api/vehicles/` - Vehicle information
-- `/api/bookings/` - Booking management
-- `/api/users/` - User management
-- `/api/auth/` - Authentication endpoints
-
-## 🚀 Deployment
-
-### Deployment to Production Server
-
-1. Set environment variables for production settings
-2. Collect static files: `python manage.py collectstatic`
-3. Configure a production-ready web server (Nginx, Apache)
-4. Set up a WSGI server (Gunicorn, uWSGI)
-5. Configure a production database (PostgreSQL recommended)
-6. Set up SSL certificate for secure connections
-
-### Docker Deployment
-
-```bash
-docker-compose up -d
-```
 
 ## 📋 Future Enhancements
 
