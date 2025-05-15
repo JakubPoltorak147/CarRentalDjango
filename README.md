@@ -74,17 +74,6 @@ CarRentalDjango/
 └── README.md                   # Project documentation
 ```
 
-## 📊 Database Schema
-
-The system uses several interconnected models to manage its data:
-
-- **User**: Extended Django User model with additional customer details
-- **Vehicle**: Stores vehicle information, specifications, and availability
-- **VehicleCategory**: Categories for different types of vehicles
-- **Location**: Available rental locations
-- **Booking**: Records of vehicle rentals including dates and customer information
-- **Payment**: Payment information and status
-
 ## 🛠️ Installation and Setup
 
 ### Prerequisites
